@@ -12,13 +12,15 @@ const App = () => {
   const addToSavedList = movie => {
     setSavedList([...savedList, movie]);
   };
-
+  const clearSaveList = () => {
+    setSavedList([])
+  }
   return (
     <div>
-      <SavedList list={savedList} />
+      <SavedList list={savedList} clearSaveList={clearSaveList}/>
       <Switch>
         <Route path='/movies/:id'>
-          <Movie/>
+          <Movie addToSavedList={addToSavedList} />
         </Route>
 
         <Route path='/'>
